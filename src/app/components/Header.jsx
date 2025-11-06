@@ -2,9 +2,11 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 
 const Header = () => {
   return (
-    <div className="flex w-full justify-between">
-      <h1>FamilyFriends</h1>
-      <IoIosNotificationsOutline />
+    <div className="flex w-full max-w-(--mobile) justify-between">
+      <h1 className="text-lg/[120%] font-extrabold tracking-[-0.9px]">
+        FamilyFriends
+      </h1>
+      <IoIosNotificationsOutline className="h-6 w-6 stroke-2" />
     </div>
   );
 };

@@ -3,13 +3,24 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --blur: 15px;
+  --stroke-width: 2;
+  --mobile: 375px;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-manrope:
+    var(--font-manrope), system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
+  --color-primary: rgba(242, 150, 143, 1);
+  --color-dark: rgba(51, 51, 51, 1);
+  --color-dark-muted: rgba(51, 51, 51, 0.4);
+  --color-border: rgba(202, 202, 205, 1);
+  --color-tertiary: rgba(107, 139, 66, 1);
+  --color-nav-icon: rgba(172, 172, 172, 1);
+  --color-nav: rgba(255, 255, 255, 0.2);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -23,4 +34,18 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
