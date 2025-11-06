@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${manrope.className} font-manrope mx-auto my-6 flex min-h-screen max-w-(--mobile) flex-col items-center justify-center px-5`}
+        className={`${manrope.className} font-manrope min-h-screen-minus-navbar mx-auto my-10 flex max-w-(--mobile) flex-col items-center px-5`}
       >
         <Header />
         {children}
