@@ -5,11 +5,13 @@ export const animals = [
     breed: "Yorkshire Terrier",
     age: "2 mdr.",
     image: "https://placecats.com/neo/300/200",
+    image_2: "https://placecats.com/neo/300/200",
     liked: true,
     animalType: "dog",
     gender: "female",
     longDesc: "En sød hund, der elsker at lege.",
     updated: "Opdateret for 1 time siden",
+    location: "København",
   },
   {
     slug: "cat-1",
@@ -17,12 +19,14 @@ export const animals = [
     breed: "Britisk langhåret kat",
     age: "2,5 år",
     image: "https://placecats.com/neo/300/200",
+    image_2: "https://placecats.com/neo/300/200",
     liked: false,
     animalType: "cat",
     gender: "male",
     longDesc:
       "En sød kat, der elsker at lege. Den er meget legesyg og elsker at jage bolde rundt i huset. Den er også meget kælen og elsker at blive nusset.",
     updated: "Opdateret den 13. juli",
+    location: "Aarhus",
   },
   {
     slug: "cat-3",

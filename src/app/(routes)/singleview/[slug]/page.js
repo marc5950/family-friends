@@ -26,7 +26,13 @@ const SingleView = async ({ params }) => {
 
   return (
     <main className="flex w-full grow flex-col gap-4 pt-4 pb-14">
-      <PictureFrame image={animal.image} name={animal.name} />
+      <PictureFrame
+        liked={animal.liked}
+        image={animal.image}
+        location={animal.location}
+        image_2={animal.image_2}
+        name={animal.name}
+      />
       <Desc
         name={animal.name}
         breed={animal.breed}

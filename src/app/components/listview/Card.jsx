@@ -6,7 +6,7 @@ const Card = ({ image, name, breed, age, liked, slug }) => {
   return (
     <div className="shadow-[rgba(19, 21, 68, 0.06)] flex w-full flex-col rounded-lg bg-white text-black shadow-sm transition-all duration-300 hover:shadow-lg">
       <div className="grid">
-        <LikeBtn liked={liked} />
+        <LikeBtn liked={liked} className="m-2" />
         <Link
           draggable={false}
           href={`/singleview/${slug}`}
