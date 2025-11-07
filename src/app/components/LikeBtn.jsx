@@ -1,13 +1,16 @@
 "use client";
 
 import { FaRegStar, FaStar } from "react-icons/fa";
-import { useState } from "react";
+import { useLike } from "../context/LikeContext";
 
-const LikeBtn = ({ liked, className = "" }) => {
-  const [isLiked, setIsLiked] = useState(liked);
+const LikeBtn = ({ slug, className = "" }) => {
+  const { isLiked, toggleLike } = useLike();
+  const liked = isLiked(slug);
 
-  const handleClick = () => {
-    setIsLiked(!isLiked);
+  const handleClick = (e) => {
+    e.preventDefault(); // Forhindrer link navigation hvis knappen er i et link
+    e.stopPropagation();
+    toggleLike(slug);
   };
 
   return (
@@ -16,12 +19,12 @@ const LikeBtn = ({ liked, className = "" }) => {
       className={`hover:bg-primary hover:text-background col-1 row-1 flex h-6 w-6 shrink-0 cursor-pointer items-center justify-center justify-self-end rounded-full bg-[#ffffff40] backdrop-blur-sm transition-all duration-300 ${className}`}
     >
       <div
-        key={isLiked ? "liked" : "not-liked"}
+        key={liked ? "liked" : "not-liked"}
         style={{
           animation: "scaleIn 0.2s ease-in-out",
         }}
       >
-        {isLiked ? (
+        {liked ? (
           <FaStar className="text-background" />
         ) : (
           <FaRegStar className="text-background" />

@@ -18,7 +18,6 @@ const CardList = ({ activeFilter }) => {
           lastName={animal.lastName}
           breed={animal.breed}
           birthDate={animal.birthDate}
-          liked={animal.liked}
           slug={animal.slug}
         />
       ))}

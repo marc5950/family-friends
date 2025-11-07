@@ -2,6 +2,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import NavBar from "./components/NavBar";
+import { LikeProvider } from "./context/LikeContext";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -19,9 +20,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${manrope.className} font-manrope mx-auto mt-10 flex min-h-screen max-w-(--mobile) flex-col items-center rounded-3xl px-5 shadow-2xl`}
       >
-        <Header />
-        {children}
-        <NavBar />
+        <LikeProvider>
+          <Header />
+          {children}
+          <NavBar />
+        </LikeProvider>
       </body>
     </html>
   );

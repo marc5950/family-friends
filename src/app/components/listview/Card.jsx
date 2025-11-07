@@ -3,19 +3,11 @@ import Image from "next/image";
 import LikeBtn from "../LikeBtn";
 import { formatAge } from "@/app/utils/formatAge";
 
-const Card = ({
-  image,
-  firstName,
-  lastName,
-  breed,
-  birthDate,
-  liked,
-  slug,
-}) => {
+const Card = ({ image, firstName, lastName, breed, birthDate, slug }) => {
   return (
     <div className="shadow-[rgba(19, 21, 68, 0.06)] flex w-full flex-col rounded-lg bg-white text-black shadow-sm transition-all duration-300 hover:shadow-lg">
       <div className="grid">
-        <LikeBtn liked={liked} className="m-2" />
+        <LikeBtn slug={slug} className="m-2" />
         <Link
           draggable={false}
           href={`/singleview/${slug}`}

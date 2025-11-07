@@ -4,7 +4,7 @@ import ReturnBtn from "@/app/components/ReturnBtn";
 import Location from "./Location";
 
 const PictureFrame = ({
-  liked,
+  slug,
   firstName,
   lastName,
   image_2,
@@ -14,7 +14,7 @@ const PictureFrame = ({
   return (
     <div className="grid grow">
       <ReturnBtn />
-      <LikeBtn liked={liked} className="m-4" />
+      <LikeBtn slug={slug} className="m-4" />
       <Location
         location={location}
         image_2={image_2}
