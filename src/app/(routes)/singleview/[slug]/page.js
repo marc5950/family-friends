@@ -31,18 +31,20 @@ const SingleView = async ({ params }) => {
         image={animal.image}
         location={animal.location}
         image_2={animal.image_2}
-        name={animal.name}
+        firstName={animal.firstName}
+        lastName={animal.lastName}
       />
       <Desc
-        name={animal.name}
+        firstName={animal.firstName}
+        lastName={animal.lastName}
         breed={animal.breed}
-        age={animal.age}
+        birthDate={animal.birthDate}
         gender={animal.gender}
         longDesc={animal.longDesc}
         updated={animal.updated}
         animalType={animal.animalType}
       />
-      <AdoptBtn name={animal.name} />
+      <AdoptBtn firstName={animal.firstName} lastName={animal.lastName} />
     </main>
   );
 };

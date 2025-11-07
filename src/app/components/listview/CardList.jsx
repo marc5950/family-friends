@@ -1,16 +1,23 @@
 import Card from "./Card";
 import { animals } from "@/app/data/animals";
 
-const CardList = () => {
+const CardList = ({ activeFilter }) => {
+  // Filtrer dyr baseret på activeFilter
+  const filteredAnimals =
+    activeFilter === "all"
+      ? animals
+      : animals.filter((animal) => animal.animalType === activeFilter);
+
   return (
     <div className="grid w-full grid-cols-2 gap-6">
-      {animals.map((animal) => (
+      {filteredAnimals.map((animal) => (
         <Card
           key={animal.slug}
           image={animal.image}
-          name={animal.name}
+          firstName={animal.firstName}
+          lastName={animal.lastName}
           breed={animal.breed}
-          age={animal.age}
+          birthDate={animal.birthDate}
           liked={animal.liked}
           slug={animal.slug}
         />

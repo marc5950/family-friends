@@ -15,9 +15,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-gray-400">
       <body
-        className={`${manrope.className} font-manrope min-h-screen-minus-navbar mx-auto my-10 flex max-w-(--mobile) flex-col items-center px-5`}
+        className={`${manrope.className} font-manrope mx-auto mt-10 flex min-h-screen max-w-(--mobile) flex-col items-center rounded-3xl px-5 shadow-2xl`}
       >
         <Header />
         {children}

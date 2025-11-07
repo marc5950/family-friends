@@ -1,4 +1,6 @@
-const Tags = ({ animalType, gender, age, breed }) => {
+import { formatAge } from "@/app/utils/formatAge";
+
+const Tags = ({ animalType, gender, birthDate, breed }) => {
   return (
     <ul className="flex flex-wrap gap-2">
       <li className="text-tertiary w-max rounded-full bg-[#ACD7FF] px-3.5 py-2">
@@ -8,7 +10,7 @@ const Tags = ({ animalType, gender, age, breed }) => {
         {gender?.charAt(0).toUpperCase() + gender?.slice(1)}
       </li>
       <li className="text-tertiary w-max rounded-full bg-[#C5E59C] px-3.5 py-2">
-        {age}
+        {formatAge(birthDate)}
       </li>
       <li className="text-tertiary w-max rounded-full bg-[#F1E689] px-3.5 py-2">
         {breed}

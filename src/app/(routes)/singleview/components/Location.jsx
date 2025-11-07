@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-const Location = ({ location, image_2, name }) => {
+const Location = ({ location, image_2, firstName, lastName }) => {
   return (
     <div className="col-1 row-1 m-5 flex h-12 w-35 gap-2.5 self-end rounded-lg bg-[#ffffff40] py-2 pr-4 pl-2 backdrop-blur-sm">
       <Image
         src={image_2}
-        alt={`${name} location`}
+        alt={`${firstName} ${lastName} location`}
         width={300}
         height={200}
         className="aspect-square h-full w-auto rounded-md object-cover"

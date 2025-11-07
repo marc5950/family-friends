@@ -3,15 +3,27 @@ import LikeBtn from "@/app/components/LikeBtn";
 import ReturnBtn from "@/app/components/ReturnBtn";
 import Location from "./Location";
 
-const PictureFrame = ({ liked, name, image_2, location, image }) => {
+const PictureFrame = ({
+  liked,
+  firstName,
+  lastName,
+  image_2,
+  location,
+  image,
+}) => {
   return (
     <div className="grid grow">
       <ReturnBtn />
       <LikeBtn liked={liked} className="m-4" />
-      <Location location={location} image_2={image_2} name={name} />
+      <Location
+        location={location}
+        image_2={image_2}
+        firstName={firstName}
+        lastName={lastName}
+      />
       <Image
         src={image}
-        alt={`${name} picture`}
+        alt={`${firstName} ${lastName} picture`}
         width={300}
         height={200}
         className="col-1 row-1 h-full w-full rounded-lg object-cover"
