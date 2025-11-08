@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import FilterKnap from "./FilterKnap";
-import { animalCategories } from "@/app/data/animalCategories";
 
-const FilterBar = ({ activeFilter, setActiveFilter }) => {
+const FilterBar = ({ activeFilter, setActiveFilter, animalTypes = [] }) => {
   return (
     <div className="my-6 flex w-full snap-x gap-4 overflow-x-auto overflow-y-hidden scroll-smooth pb-3">
       <button
@@ -21,7 +20,7 @@ const FilterBar = ({ activeFilter, setActiveFilter }) => {
         />
         Alle
       </button>
-      {animalCategories.map((category) => (
+      {animalTypes.map((category) => (
         <FilterKnap
           key={category.slug}
           image={category.image}

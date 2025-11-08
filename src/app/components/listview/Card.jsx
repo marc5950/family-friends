@@ -3,7 +3,8 @@ import Image from "next/image";
 import LikeBtn from "../LikeBtn";
 import { formatAge } from "@/app/utils/formatAge";
 
-const Card = ({ image, firstName, lastName, breed, birthDate, slug }) => {
+// Card komponent til at vise et enkelt dyr i list view
+const Card = ({ image, name, breed, birthDate, slug }) => {
   return (
     <div className="shadow-[rgba(19, 21, 68, 0.06)] flex w-full flex-col rounded-lg bg-white text-black shadow-sm transition-all duration-300 hover:shadow-lg">
       <div className="grid">
@@ -15,11 +16,11 @@ const Card = ({ image, firstName, lastName, breed, birthDate, slug }) => {
         >
           <Image
             loading="eager"
-            src={image}
-            alt={`placeholder image of a ${firstName} ${lastName}`}
-            width={300}
-            height={200}
-            className="rounded-lg"
+            src={image?.urlSecureFullsize}
+            alt={`placeholder image of a ${name}`}
+            width={image?.resolutionX}
+            height={image?.resolutionY}
+            className="h-30 w-full rounded-lg object-cover object-top"
             draggable={false}
           />
         </Link>
@@ -27,9 +28,7 @@ const Card = ({ image, firstName, lastName, breed, birthDate, slug }) => {
       <Link draggable={false} href={`/singleview/${slug}`}>
         <div className="flex flex-col gap-1 p-2">
           <div className="flex items-center justify-between">
-            <h2 className="text-[15px] font-bold">
-              {firstName} {lastName}
-            </h2>
+            <h2 className="text-[15px] font-bold">{name}</h2>
             <p className="text-dark-muted text-[13px]/[120%]">
               {formatAge(birthDate)}
             </p>

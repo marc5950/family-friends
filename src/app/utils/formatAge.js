@@ -1,3 +1,5 @@
+// Formaterer fødselsdato til alder (f.eks. "2 år" eller "8 mdr.")
+// Bruges i Card komponenten til at vise dyrets alder
 export const formatAge = (birthDateString) => {
   const birthDate = new Date(birthDateString);
   const now = new Date();

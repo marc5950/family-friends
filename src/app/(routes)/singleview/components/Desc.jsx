@@ -1,17 +1,19 @@
 import Tags from "./Tags";
 
+// Formaterer opdateringsdato til relativ tid (f.eks. "Opdateret for 5 timer siden")
+// eller absolut dato (f.eks. "Opdateret den 8. november")
 const formatUpdatedDate = (dateString) => {
   const updatedDate = new Date(dateString);
   const now = new Date();
   const diffInMs = now - updatedDate;
   const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
 
-  // Hvis mindre end 24 timer siden
+  // Hvis mindre end 24 timer siden, vis relativ tid
   if (diffInHours < 24) {
     return `Opdateret for ${diffInHours} timer siden`;
   }
 
-  // Ellers vis dato med måned
+  // Ellers vis absolut dato med måned
   const months = [
     "januar",
     "februar",
@@ -32,6 +34,7 @@ const formatUpdatedDate = (dateString) => {
   return `Opdateret den ${day}. ${month}`;
 };
 
+// Desc komponent til at vise dyrets beskrivelse i single view
 const Desc = ({
   firstName,
   lastName,
@@ -53,7 +56,7 @@ const Desc = ({
         birthDate={birthDate}
         breed={breed}
       />
-      <p>{longDesc}</p>
+      <div dangerouslySetInnerHTML={{ __html: longDesc }} />
       <p className="text-dark-muted -mt-2 text-[13px]/[150%]">
         {formatUpdatedDate(updated)}
       </p>

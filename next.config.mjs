@@ -8,6 +8,12 @@ const nextConfig = {
         port: "",
         pathname: "/neo/**",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.rescuegroups.org",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };
