@@ -3,15 +3,21 @@ import Desc from "../components/Desc";
 import AdoptBtn from "../components/AdoptBtn";
 import Link from "next/link";
 
+// Fetch data med caching (delt mellem alle sider)
+async function getAnimalData() {
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+  const res = await fetch(`${baseUrl}/api`, {
+    cache: "force-cache",
+  });
+  return res.json();
+}
+
 const SingleView = async ({ params }) => {
   // Hent slug fra params (Next.js 15 kræver await)
   const { slug } = await params;
 
-  // Fetch data fra API med 60 sekunders cache
-  const res = await fetch("http://localhost:3000/api", {
-    next: { revalidate: 60 },
-  });
-  const data = await res.json();
+  // Hent data (caches automatisk)
+  const data = await getAnimalData();
 
   // Tjek om API returnerede data
   if (!data.data) {

@@ -3,6 +3,16 @@ export const revalidate = 60;
 
 export async function GET() {
   try {
+    // Hent API key fra environment variable
+    const apiKey = process.env.RESCUEGROUPS_API_KEY;
+
+    if (!apiKey) {
+      return Response.json(
+        { error: "API key ikke konfigureret" },
+        { status: 500 },
+      );
+    }
+
     // Kald til RescueGroups API
     const res = await fetch("https://api.rescuegroups.org/http/v2.json", {
       method: "POST",
@@ -10,12 +20,12 @@ export async function GET() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        apikey: "31MWkkgk",
+        apikey: apiKey,
         objectType: "animals",
         objectAction: "publicSearch",
         search: {
           resultStart: 0,
-          resultLimit: 100, // Hent 100 dyr
+          resultLimit: 500, // Hent 500 dyr (balance mellem udvalg og performance)
           resultSort: "animalUpdatedDate", // Sortér efter opdateringsdato
           resultOrder: "desc", // Nyeste først
           fields: [

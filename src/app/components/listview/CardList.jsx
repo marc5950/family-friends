@@ -1,13 +1,19 @@
+"use client";
+
+import { useState } from "react";
 import Card from "./Card";
 
-const CardList = async ({ filter = "all", data }) => {
+const CardList = ({ filter = "all", data }) => {
+  // State til at holde styr på hvor mange dyr der vises
+  const [visibleCount, setVisibleCount] = useState(10);
+
   // Tjek om data er gyldigt
   if (!data.data) {
     return <div className="p-4">Kunne ikke hente dyr...</div>;
   }
 
   // Filtrer og map dyrene til det format vi skal bruge
-  const animals = Object.entries(data.data)
+  const allAnimals = Object.entries(data.data)
     .filter(([id, animal]) => {
       // Kun dyr med mindst 2 billeder
       const hasEnoughImages =
@@ -20,7 +26,6 @@ const CardList = async ({ filter = "all", data }) => {
 
       return hasEnoughImages && matchesFilter;
     })
-    .slice(0, 10) // Vis kun de første 10 dyr
     .map(([id, animal]) => ({
       slug: animal.animalID || id,
       name: animal.animalName || "Unavngivet",
@@ -29,22 +34,46 @@ const CardList = async ({ filter = "all", data }) => {
       image: animal.animalPictures[0], // Første billede
     }));
 
+  // Vis kun de første X dyr baseret på visibleCount
+  const visibleAnimals = allAnimals.slice(0, visibleCount);
+
+  // Tjek om der er flere dyr at vise
+  const hasMore = visibleCount < allAnimals.length;
+
   // Log til debugging
   console.log("Active filter:", filter);
-  console.log("Antal dyr fundet:", animals.length);
+  console.log("Antal dyr fundet:", allAnimals.length);
+  console.log("Antal dyr vist:", visibleAnimals.length);
+
+  // Funktion til at indlæse 10 mere
+  const loadMore = () => {
+    setVisibleCount((prev) => prev + 10);
+  };
 
   return (
-    <div className="grid w-full grid-cols-2 gap-6">
-      {animals.map((animal) => (
-        <Card
-          key={animal.slug}
-          image={animal.image}
-          name={animal.name}
-          breed={animal.breed}
-          birthDate={animal.birthDate}
-          slug={animal.slug}
-        />
-      ))}
+    <div className="flex w-full flex-col items-center gap-6">
+      <div className="grid w-full grid-cols-2 gap-6">
+        {visibleAnimals.map((animal) => (
+          <Card
+            key={animal.slug}
+            image={animal.image}
+            name={animal.name}
+            breed={animal.breed}
+            birthDate={animal.birthDate}
+            slug={animal.slug}
+          />
+        ))}
+      </div>
+
+      {/* Vis "Load More" knap hvis der er flere dyr */}
+      {hasMore && (
+        <button
+          onClick={loadMore}
+          className="hover:bg-primary hover:text-background border-primary bg-background text-primary rounded-full border-2 px-8 py-3 transition-all duration-300"
+        >
+          Indlæs 10 mere
+        </button>
+      )}
     </div>
   );
 };

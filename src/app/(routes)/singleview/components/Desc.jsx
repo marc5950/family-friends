@@ -36,8 +36,7 @@ const formatUpdatedDate = (dateString) => {
 
 // Desc komponent til at vise dyrets beskrivelse i single view
 const Desc = ({
-  firstName,
-  lastName,
+  name,
   breed,
   birthDate,
   animalType,
@@ -47,9 +46,7 @@ const Desc = ({
 }) => {
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-[28px]/[120%] font-bold">
-        {firstName} {lastName}
-      </h2>
+      <h2 className="text-[28px]/[120%] font-bold">{name}</h2>
       <Tags
         animalType={animalType}
         gender={gender}
